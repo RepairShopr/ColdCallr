@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  resources :contacts do
-    resources :activities
+  namespace :api do
+    resources :contacts do
+      resources :activities
+    end
   end
+
 
   get '*path' => redirect('/')
   # The priority is based upon order of creation: first created -> highest priority.
