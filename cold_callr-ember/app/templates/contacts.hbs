@@ -1,2 +1,7 @@
 Contacts
+<p>current: {{currentContact}}</p>
+<p><button {{action "previous"}} class="btn btn-default">Previous</button></p>
+<p><button {{action "getMore"}} class="btn btn-default">Next</button></p>
+<p>{{link-to 'Next' (query-params page=nextPage)}}</p>
 {{outlet}}
+

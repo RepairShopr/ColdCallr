@@ -4,12 +4,9 @@ class Api::ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all
+    @contacts = Contact.where(status: "New").order(:id)
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @contacts }
-    end
+    render json: @contacts.paginate(per_page: 1, page: params[:page])
   end
 
   # GET /contacts/1
@@ -71,13 +68,13 @@ class Api::ContactsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_contact
-      @contact = Contact.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_contact
+    @contact = Contact.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def contact_params
-      params.require(:contact).permit(:name, :phone, :status, :user_id, :properties)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def contact_params
+    params.require(:contact).permit(:name, :phone, :status, :user_id, :properties)
+  end
 end
