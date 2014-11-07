@@ -7,7 +7,7 @@ export default Ember.Route.extend({
 
   afterModel: function(contacts, transition) {
     if (contacts.get('length') > 0) {
-      this.transitionTo('contacts.show', contacts.get('lastObject'));
+//      this.transitionTo('contacts.show', contacts.get('firstObject'));
     }
   },
 

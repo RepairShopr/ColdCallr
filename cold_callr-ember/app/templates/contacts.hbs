@@ -1,7 +1,14 @@
-Contacts
-<p>current: {{currentContact}}</p>
-<p><button {{action "previous"}} class="btn btn-default">Previous</button></p>
-<p><button {{action "getMore"}} class="btn btn-default">Next</button></p>
-<p>{{link-to 'Next' (query-params page=nextPage)}}</p>
 {{outlet}}
+
+<div class="row">
+    <div class="12-md-col">
+        <ol>
+          {{#each contact in filteredContacts}}
+              <li>{{link-to contact.name 'contacts.show' contact}}</li>
+          {{/each}}
+        </ol>
+
+    </div>
+</div>
+
 

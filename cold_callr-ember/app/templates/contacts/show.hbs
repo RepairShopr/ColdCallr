@@ -1,3 +1,13 @@
-Details:
 
-{{name}}
+<div class="jumbotron">
+    <h1>{{name}}</h1>
+    <p class="lead">{{properties}}</p>
+    <p>
+        <a class="btn btn-lg btn-success" href="tel://{{unbound phone}}" role="button">Call: {{phone}}</a>
+      {{link-to 'Next' 'contacts.show' nextId class="pull-right btn btn-default"}}
+
+
+    </p>
+</div>
+
+

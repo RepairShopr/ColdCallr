@@ -6,7 +6,7 @@ class Api::ContactsController < ApplicationController
   def index
     @contacts = Contact.where(status: "New").order(:id)
 
-    render json: @contacts.paginate(per_page: 1, page: params[:page])
+    render json: @contacts.paginate(per_page: 200, page: params[:page])
   end
 
   # GET /contacts/1
