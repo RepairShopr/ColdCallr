@@ -4,4 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :authenticate_user!
 
+  def index
+    render text: File.open("#{Rails.root}/public/index.html").read
+  end
 end
