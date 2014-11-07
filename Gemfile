@@ -26,10 +26,10 @@ group :development do
   gem 'sqlite3'
 
   gem 'spring'
-  gem 'faker'
   gem 'annotate', '~> 2.6.5'
 end
 
+gem 'faker'
 
 gem 'devise'
 gem 'will_paginate', '~> 3.0.5'
