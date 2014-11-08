@@ -1,13 +1,67 @@
 
 <div class="jumbotron">
+    <div class="row">
+        <div class="col-lg-6">
+          {{link-to 'Previous' 'contacts.show' previousId class="pull-left btn btn-default"}}
+        </div>
+        <div class="col-lg-6">
+          {{link-to 'Next' 'contacts.show' nextId class="pull-right btn btn-default"}}
+
+        </div>
+    </div>
     <h1>{{name}}</h1>
     <p class="lead">{{properties}}</p>
-    <p>
-        <a class="btn btn-lg btn-success" href="tel://{{unbound phone}}" role="button">Call: {{phone}}</a>
-      {{link-to 'Next' 'contacts.show' nextId class="pull-right btn btn-default"}}
+    <div class="row">
+        <div class="col-lg-12">
+            <a class="btn btn-lg btn-success" href="tel://{{unbound phone}}" role="button">Call: {{phone}}</a>
+
+        </div>
+    </div>
+
+    <div class="row mtm" style="margin-top: 10px;">
+        <div class="col-lg-12">
+            Status: {{inline-dropdown value=status model=this options=controller.statusOptions attribute="status"}}
+
+        </div>
+    </div>
+
+    <div style="height: 20px;"></div>
 
 
-    </p>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+
+                <div class="panel-heading">Admin Notes</div>
+                <div class="panel-body">
+
+                    <ul class="list-unstyled">
+                      {{#each sortedActivities}}
+                          <li><strong>{{userName}}</strong> {{createdAt}} {{notes}}</li>
+                      {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">New Note</div>
+                <div class="panel-body">
+                    <form {{action "newAdminNote" on="submit"}}>
+                        <div class="form-group row">
+                            <div class="col-sm-9">
+                              {{input value=newNoteBody id='body' class="form-control" placeholder="New Note"}}
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn btn-primary btn-block" type="submit">Add Note</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 

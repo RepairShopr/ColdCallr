@@ -2,9 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :users
   namespace :api do
-    resources :contacts do
-      resources :activities
-    end
+    resources :contacts
+    resources :activities
   end
 
 

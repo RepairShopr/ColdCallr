@@ -1,0 +1,20 @@
+{{#if isEditing}}
+    <div class="form-group">
+        <select id="selectBox" name="selectBox" class="form-control">
+          {{#each item in options}}
+            {{#if item.value}}
+                <option value="{{unbound item.value}}" {{bind-attr selected="isSelected"}}>{{item.label}}</option>
+            {{else}}
+                <option value="{{unbound item}}" {{bind-attr selected="isSelected"}}>{{item}}</option>
+            {{/if}}
+          {{/each}}
+        </select>
+    </div>
+
+    <button {{action 'save' this}}>Save</button>
+    <button {{action 'cancel'}}>Cancel</button>
+{{else}}
+  {{yield}}
+  <span class="dottr">{{value}}</span>
+{{/if}}
+

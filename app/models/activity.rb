@@ -7,8 +7,10 @@
 #  notes      :text
 #  created_at :datetime
 #  updated_at :datetime
+#  user_id    :integer
 #
 
 class Activity < ActiveRecord::Base
   belongs_to :contact
+  belongs_to :user
 end

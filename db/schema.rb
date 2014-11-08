@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141106144303) do
+ActiveRecord::Schema.define(version: 20141108145627) do
 
   create_table "activities", force: true do |t|
     t.integer  "contact_id"
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "contacts", force: true do |t|

@@ -1,4 +1,5 @@
 class Api::ActivitiesController < ApplicationController
+  protect_from_forgery :except => [:update, :delete, :create]
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
 
   # GET /activities
@@ -34,6 +35,7 @@ class Api::ActivitiesController < ApplicationController
   # POST /activities.json
   def create
     @activity = Activity.new(activity_params)
+    @activity.user_id = current_user.id
 
     respond_to do |format|
       if @activity.save

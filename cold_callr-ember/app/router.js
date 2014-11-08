@@ -8,6 +8,7 @@ Router.map(function() {
   this.resource('contacts', function(){
     this.route('show', {path: ':contact_id'});
   });
+  this.resource('activities', function() { });
 });
 
 export default Router;
