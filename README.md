@@ -22,16 +22,16 @@ Example flow;
 
 ![Screenshot](https://dl.dropboxusercontent.com/u/15079951/repairshopr/ColdCallrEmber.png)
 
+## Setup Script
+
+run `./bin/setup.sh` to create your DB and setup dependencies for the ember application
+
 
 ## Get Started 
 
-hi there - this is a simple rails app meant to just give you an API to some call log data for managing cold calling.
-
-To fire this up:
+If you ran the setup script without errors then your rails server and ember apps should be ready
 
 ```
-rake db:migrate
-rake db:seed
 rails s
 cd cold_callr-ember
 ember serve --proxy=http://localhost:3000
