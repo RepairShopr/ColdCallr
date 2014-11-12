@@ -5,8 +5,21 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+email = "user@user.com"
+password = "password"
 
-User.first ? puts("already exists") : User.create(email: "user@user.com", password: 'password', password_confirmation: 'password')
+# Resets the default user.
+if user = User.find_by_email(email)
+  user.destroy
+end
+
+User.create({
+                email: email,
+                password: password,
+                password_confirmation: password
+            })
+puts "seed user created: #{email}:#{password}"
+
 
 100.times do |i|
   Contact.create name: Faker::Name.name,
