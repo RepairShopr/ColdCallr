@@ -51,6 +51,8 @@ GEM
     execjs (2.2.2)
     faker (1.4.3)
       i18n (~> 0.5)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
     hike (1.2.3)
     i18n (0.6.11)
     json (1.8.1)
@@ -60,6 +62,7 @@ GEM
     mime-types (1.25.1)
     minitest (5.4.2)
     multi_json (1.10.1)
+    multipart-post (2.0.0)
     orm_adapter (0.5.0)
     pg (0.17.1)
     polyglot (0.3.5)
@@ -134,6 +137,7 @@ DEPENDENCIES
   byebug
   devise
   faker
+  faraday
   pg
   rails (= 4.1.4)
   rails_12factor

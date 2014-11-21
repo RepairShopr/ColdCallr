@@ -18,7 +18,7 @@ class Contact < ActiveRecord::Base
 
   has_many :activities
 
-
+  validates_uniqueness_of :phone
 
   before_validation :set_defaults
 
