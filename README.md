@@ -43,4 +43,21 @@ To deploy/production build:
 ./bin/build.sh
 ```
 
+To get your own contacts imported, just get a heroku console going and;
+
+```
+heroku run console
+csv_importer = CSVImportr.new
+csv_importer.file_path = "http://path_to_file.com/file.csv"
+csv_importer.import_contacts
+```
+
+You can view the errors with;
+
+```
+csv_importer.show_errors
+```
+
+It expects your CSV data to look like this: https://dl.dropboxusercontent.com/u/15079951/cold-callr-sample-csv.csv
+
 Have fun
