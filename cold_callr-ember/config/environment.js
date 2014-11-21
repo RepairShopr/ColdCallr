@@ -2,6 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
+    modulePrefix: 'cold-callr-ember',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
@@ -19,8 +20,6 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    ENV.host = '';
-
     // ENV.APP.LOG_RESOLVER = true;
     ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -29,12 +28,24 @@ module.exports = function(environment) {
   }
 
   if (environment === 'test') {
-    ENV.baseURL = '/'; // Testem prefers this...
+    // Testem prefers this...
+    ENV.baseURL = '/';
+    ENV.locationType = 'auto';
+
+    // keep test console output quieter
+    ENV.APP.LOG_ACTIVE_GENERATION = false;
+    ENV.APP.LOG_VIEW_LOOKUPS = false;
+
+    ENV.APP.rootElement = '#ember-testing';
   }
 
   if (environment === 'production') {
-    ENV.host = '';
 
+  }
+
+  ENV.contentSecurityPolicy = {
+    'style-src': "'self' 'unsafe-inline' http://maxcdn.bootstrapcdn.com",
+    'font-src': "'self' 'unsafe-inline' http://maxcdn.bootstrapcdn.com"
   }
 
   return ENV;
