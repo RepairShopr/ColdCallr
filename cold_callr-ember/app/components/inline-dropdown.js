@@ -15,7 +15,6 @@ export default Ember.Component.extend({
 
   actions: {
     save: function(editor){
-      debugger;
 
       console.log('saving: ' + selectBox.value);
       var model = this.model;

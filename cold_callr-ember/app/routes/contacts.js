@@ -7,34 +7,23 @@ export default Ember.Route.extend({
 
   afterModel: function(contacts, transition) {
     if (contacts.get('length') > 0) {
-//      this.transitionTo('contacts.show', contacts.get('firstObject'));
+      this.transitionTo('contacts.show', contacts.get('firstObject'));
     }
   },
 
   actions: {
-    getMore: function(){
-      if (this.get('loadingMore')) {
-        return;
-      }
+    getNext: function(contact){
+      var that = this;
+      var contactPromise = this.store.find('contact', {current_contact: contact.id, per_page: 1});
+      contactPromise.then(function() {
+        console.log("in the promise then");
+        console.log("length is" + contactPromise.get('length'));
+        that.controller.set('previousId',contact.id);
+        that.transitionTo("contacts.show", contactPromise.content.content[0].id);
+      })
 
-      this.set('loadingMore', true);
-
-      var controller = this.get('controller'),
-        nextPage   = controller.get('currentPage') + 1,
-        perPage    = controller.get('perPage');
-
-
-      var page = this.incrementProperty('currentPage');
-      controller.set("currentPage",page);
-
-      var model = this.get('store').find('contact', { page: page });
-
-      if (model.get('length') > 0) {
-        this.transitionTo('contacts.show', model.get('lastObject'));
-      }
-
-      this.set('loadingMore', false);
     }
-
   }
+
+
 });

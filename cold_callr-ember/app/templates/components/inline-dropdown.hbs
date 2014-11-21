@@ -1,6 +1,6 @@
 {{#if isEditing}}
     <div class="form-group">
-        <select id="selectBox" name="selectBox" class="form-control">
+        <select id="selectBox" name="selectBox" class="form-control" style="max-width: 200px;">
           {{#each item in options}}
             {{#if item.value}}
                 <option value="{{unbound item.value}}" {{bind-attr selected="isSelected"}}>{{item.label}}</option>

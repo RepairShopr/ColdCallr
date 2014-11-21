@@ -14,9 +14,11 @@
 #
 
 class Contact < ActiveRecord::Base
-  serialize :properties
+  serialize :properties, Hash
 
   has_many :activities
+
+
 
   before_validation :set_defaults
 

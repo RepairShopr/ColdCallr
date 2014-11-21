@@ -2,10 +2,9 @@
 <div class="jumbotron">
     <div class="row">
         <div class="col-lg-6">
-          {{link-to 'Previous' 'contacts.show' previousId class="pull-left btn btn-default"}}
         </div>
         <div class="col-lg-6">
-          {{link-to 'Next' 'contacts.show' nextId class="pull-right btn btn-default"}}
+            <button {{action "getNext" model}} class="pull-right btn btn-success btn-lg">Next</button>
 
         </div>
     </div>
@@ -20,7 +19,7 @@
 
     <div class="row mtm" style="margin-top: 10px;">
         <div class="col-lg-12">
-            Status: {{inline-dropdown value=status model=this options=controller.statusOptions attribute="status"}}
+            Status: {{inline-dropdown value=status model=model options=controller.statusOptions attribute="status"}}
 
         </div>
     </div>
@@ -50,7 +49,7 @@
                     <form {{action "newAdminNote" on="submit"}}>
                         <div class="form-group row">
                             <div class="col-sm-9">
-                              {{input value=newNoteBody id='body' class="form-control" placeholder="New Note"}}
+                              {{textarea value=newNoteBody id='body' class="form-control" placeholder="New Note" rows=4}}
                             </div>
                             <div class="col-sm-3">
                                 <button class="btn btn-primary btn-block" type="submit">Add Note</button>

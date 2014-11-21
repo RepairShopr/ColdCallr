@@ -1,12 +1,16 @@
 class Api::ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  protect_from_forgery :except => [:update]
 
   # GET /contacts
   # GET /contacts.json
   def index
     @contacts = Contact.where(status: "New").order(:id).includes(:activities => :user)
+    if params[:current_contact]
+      @contacts = Contact.where(status: "New").where("id > ?",params[:current_contact].to_i).order(:id).includes(:activities => :user)
+    end
 
-    render json: @contacts.paginate(per_page: 200, page: params[:page])
+    render json: @contacts.paginate(per_page: (params[:per_page] || 10), page: params[:page])
   end
 
   # GET /contacts/1
@@ -47,7 +51,7 @@ class Api::ContactsController < ApplicationController
   # PATCH/PUT /contacts/1.json
   def update
     respond_to do |format|
-      if @contact.update(contact_params)
+      if @contact.update(contact_params.slice(:status))
         format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
         format.json { head :no_content }
       else
