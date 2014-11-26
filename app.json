@@ -5,6 +5,6 @@
   "logo": "http://upload.wikimedia.org/wikipedia/en/a/a9/Heroku_logo.png",
   "keywords": ["ember", "rails", "gofast"],
   "scripts": {
-      "postdeploy": ["bundle exec rake db:migrate", "bundle exec rake db:seed"]
+      "postdeploy": "bundle exec rake db:migrate && bundle exec rake db:seed"
     }
 }
