@@ -31,7 +31,8 @@ class Api::ContactsController < ApplicationController
     end
 
     postal = @contact.properties[:postal]
-    full_api_call = "#{external_api_endpoint}?postal=#{postal.to_s.split("-")[0]}&token=#{api_token}"
+    city = @contact.properties[:city]
+    full_api_call = "#{external_api_endpoint}?postal=#{postal.to_s.split("-")[0]}&city=#{city}&token=#{api_token}"
     result = Faraday.get(full_api_call)
     render json: result.body
   end
