@@ -3,5 +3,8 @@
   "description": "A simple app to help your sales team make fast progress and keep things tracked.",
   "repository": "https://github.com/RepairShopr/ColdCallr",
   "logo": "http://upload.wikimedia.org/wikipedia/en/a/a9/Heroku_logo.png",
-  "keywords": ["ember", "rails", "gofast"]
+  "keywords": ["ember", "rails", "gofast"],
+  "scripts": {
+      "postdeploy": ["bundle exec rake db:migrate", "bundle exec rake db:seed"]
+    }
 }
