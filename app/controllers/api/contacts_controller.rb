@@ -30,8 +30,8 @@ class Api::ContactsController < ApplicationController
       render json: {message: "Not configured."} and return
     end
 
-    postal = @contact.properties[:postal]
-    city = @contact.properties[:city]
+    postal = @contact.properties['postal']
+    city = @contact.properties['city']
     phone = @contact.phone
     full_api_call = "#{external_api_endpoint}?postal=#{postal.to_s.split("-")[0]}&city=#{city}&phone=#{phone}&token=#{api_token}"
     result = Faraday.get(full_api_call)
