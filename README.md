@@ -1,3 +1,5 @@
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 ## What is it?
 
 Just a simple app you can spin up to give your sales team a tool to manage cold calling.
