@@ -1,5 +1,5 @@
 class Api::ContactsController < ApplicationController
-  before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :set_contact, only: [:show, :external_contacts, :edit, :update, :destroy]
   protect_from_forgery :except => [:update]
 
   # GET /contacts
@@ -20,6 +20,20 @@ class Api::ContactsController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @contact }
     end
+  end
+
+  def external_contacts
+    external_api_endpoint = ENV["EXTERNAL_API_ENDPOINT"]
+    api_token = ENV["API_TOKEN"]
+
+    if external_api_endpoint.blank? or api_token.blank?
+      render json: {message: "Not configured."} and return
+    end
+
+    postal = @contact.properties[:postal]
+    full_api_call = "#{external_api_endpoint}?postal=#{postal.to_s.split("-")[0]}&token=#{api_token}"
+    result = Faraday.get(full_api_call)
+    render json: result.body
   end
 
   # GET /contacts/new

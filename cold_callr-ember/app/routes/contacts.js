@@ -12,8 +12,11 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    getNext: function(contact){
+    getNext: function(contact,status){
       var that = this;
+      contact.set("status",status);
+      contact.save();
+
       var contactPromise = this.store.find('contact', {current_contact: contact.id, per_page: 1});
       contactPromise.then(function() {
         console.log("in the promise then");

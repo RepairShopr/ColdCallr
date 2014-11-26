@@ -6,7 +6,8 @@ export default DS.Model.extend({
   status: DS.attr(),
   doNotCall: DS.attr('boolean'),
   properties: DS.attr(),
-  activities: DS.hasMany('activity', {embedded: true})
+  activities: DS.hasMany('activity', {embedded: true}),
 
+  externalContacts: DS.hasMany('external-contact', {async: true})
 
 });

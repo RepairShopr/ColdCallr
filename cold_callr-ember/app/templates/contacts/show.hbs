@@ -1,26 +1,60 @@
 
 <div class="jumbotron">
     <div class="row">
-        <div class="col-lg-6">
-        </div>
-        <div class="col-lg-6">
-            <button {{action "getNext" model}} class="pull-right btn btn-success btn-lg">Next</button>
+
+        <div class="col-xs-12 text-right">
+          {{#if isNexting}}
+              <div class="row">
+                  <div class="col-xs-4 text-right">Status:</div>
+                  <div class="col-xs-8 text-right">
+                      <div class="btn-group">
+                          <button {{action "getNext" model 'Left Message'}} class="btn btn-success">Left Message</button>
+                          <button {{action "getNext" model 'Do Not Call'}} class="btn btn-danger">Do Not Call</button>
+                          <button {{action "getNext" model 'Call Back'}} class="btn btn-info">Call Back</button>
+                          <button {{action "getNext" model 'Wrong Number'}} class="btn btn-warning">Wrong Number</button>
+                          <button {{action "getNext" model 'Success'}} class="btn btn-success">Success</button>
+
+                      </div>
+                  </div>
+              </div>
+
+
+          {{else}}
+              <button {{action "nextClick"}} class="btn btn-success">Next</button>
+          {{/if}}
 
         </div>
     </div>
-    <h1>{{name}}</h1>
-    <p class="lead">{{properties}}</p>
     <div class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-lg btn-success" href="tel://{{unbound phone}}" role="button">Call: {{number-to-phone phone}}</a>
+        <div class="col-xs-8">
+            <h1>{{name}}</h1>
+            <ul class="lead">
+              {{#each property in properties}}
+                  <li>{{property.key}}: {{property.value}}</li>
+              {{/each}}
+            </ul>
+            <div class="row">
+                <div class="col-lg-12">
+                    <a class="btn btn-lg btn-success" href="tel://{{unbound phone}}" role="button">Call: {{number-to-phone phone}}</a>
+
+                </div>
+            </div>
+
+            <div class="row mtm" style="margin-top: 10px;">
+                <div class="col-lg-12">
+                    Status: {{inline-dropdown value=status model=model options=controller.statusOptions attribute="status"}}
+
+                </div>
+            </div>
 
         </div>
-    </div>
-
-    <div class="row mtm" style="margin-top: 10px;">
-        <div class="col-lg-12">
-            Status: {{inline-dropdown value=status model=model options=controller.statusOptions attribute="status"}}
-
+        <div class="col-xs-4 panel" style='margin-top: 100px;'>
+            <p>Existing Contacts:</p>
+            <ul>
+              {{#each externalContact in externalContacts}}
+                  <li>{{externalContact.name}} {{external-more contact=externalContact}}</li>
+              {{/each}}
+            </ul>
         </div>
     </div>
 
