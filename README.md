@@ -60,4 +60,24 @@ csv_importer.show_errors
 
 It expects your CSV data to look like this: https://dl.dropboxusercontent.com/u/15079951/cold-callr-sample-csv.csv
 
+For our purposes, this app is going through a list of potential contacts and showing them to a sales person. You might not 100% trust your list to be de-duplicated from your active customers, and that exists in another rails app. 
+
+ColdCallr will proxy that request and can go get external contacts from a remote API endpoint. For us that means, when you are about to call someone, we are doing a live query against the postal code for existing customers and showing that to the sales rep. They get this one last chance to make sure the current contact isn't a duplicate.
+
+If you want to use your existing CRM or live app to populate the "Existing Contacts" area, you can setup an action in your 'main app' like this:
+
+(Our contacts are called Accounts in the other app - and we use a zip column instead of postal, so you can easily see how to translate here)
+
+```ruby
+ def cold_callr
+    if params[:token] == 'sometokenforsecurity'
+      accounts = Account.where(zip: params[:postal])
+      render json: {external_contacts: accounts.paginate(per_page: 20, page: params[:page]).map{|a| {id: a.id, name: a.name, phone: a.phone, properties: a.attributes.map{|i| "#{i[0]}:#{i[1]}"}.join(",")}}}.to_json
+    else
+      render json: {fail: 'not logged in'}, status: :unauthorized
+    end
+
+  end
+  ```
+
 Have fun
