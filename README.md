@@ -81,5 +81,11 @@ If you want to use your existing CRM or live app to populate the "Existing Conta
 
   end
   ```
+  
+  To start the server with your existing contact endpoint, setup a couple environment variables:
+  
+  ```
+  EXTERNAL_API_ENDPOINT=http://localhost:4000/api/accounts/cold_callr API_TOKEN=supersecrettoken rails s -p 4002
+  ```
 
 Have fun
