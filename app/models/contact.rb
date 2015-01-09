@@ -20,6 +20,11 @@ class Contact < ActiveRecord::Base
 
   validates_uniqueness_of :phone
 
+  scope :is_open, -> { where("status = ? OR status = ?","New","Call Back").where(do_not_call: false) }
+  scope :any_status, -> { where(do_not_call: false) }
+  scope :is_new, -> { where("status != ? AND status != ?","New","Call Back").where(do_not_call: false)  }
+
+  POSSIBLE_STATUSES = [ 'New', 'Wrong Number', 'Do Not Call', 'Call Back', 'Left Message', 'Closed']
   before_validation :set_defaults
 
   def set_defaults

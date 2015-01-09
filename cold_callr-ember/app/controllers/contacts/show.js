@@ -4,7 +4,7 @@ export default Ember.ObjectController.extend({
   statusOptions: [ 'New', 'Wrong Number', 'Call Back', 'Closed'],
   sortProperties: ['id:desc'],
   sortedActivities: Ember.computed.sort('model.activities', 'sortProperties'),
-  isNexting: false,
+  isNexting: true,
 
   actions: {
     newAdminNote: function(){
@@ -21,7 +21,7 @@ export default Ember.ObjectController.extend({
     },
 
     getNext: function(contact,status){
-      this.set("isNexting",false);
+      //this.set("isNexting",false);
       return true;
     }
   }

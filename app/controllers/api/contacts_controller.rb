@@ -5,12 +5,22 @@ class Api::ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.where(status: "New").order(:id).includes(:activities => :user)
+    if params[:query].present?
+      if params[:query] == 'open'
+        scoped = Contact.is_open
+      elsif params[:query] == "all"
+        scoped = Contact.any_status
+      end
+    end
+    scoped ||= Contact.is_new
+    
+    scoped =  scoped.order(:id).includes(:activities => :user)
     if params[:current_contact]
-      @contacts = Contact.where(status: "New").where("id > ?",params[:current_contact].to_i).order(:id).includes(:activities => :user)
+      scoped = scoped.where("id > ?",params[:current_contact].to_i).order(:id).includes(:activities => :user)
     end
 
-    render json: @contacts.paginate(per_page: (params[:per_page] || 10), page: params[:page])
+    @contacts = scoped.paginate(per_page: (params[:per_page] || 50), page: params[:page])
+    render json: @contacts, :meta => {:total_pages => @contacts.total_pages, :page => (params[:page] || 1).to_i}
   end
 
   # GET /contacts/1
@@ -27,7 +37,8 @@ class Api::ContactsController < ApplicationController
     api_token = ENV["API_TOKEN"]
 
     if external_api_endpoint.blank? or api_token.blank?
-      render json: {message: "Not configured."} and return
+      puts "External API Not Configured" if Rails.env.development?
+      render json: {external_contacts: []} and return
     end
 
     postal = @contact.properties['postal']
