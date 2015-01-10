@@ -1,103 +1,110 @@
+<div id="ajax-modal" class="modal show" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-body">
+                <!--modal body start-->
+                <div class="jumbotron">
+                    <div class="row">
 
-<div class="jumbotron">
-    <div class="row">
+                        <div class="col-xs-12 text-right">
+                          {{#if isNexting}}
+                              <div class="row">
+                                  <div class="col-xs-1">
+                                    {{#link-to 'contacts' (query-params status="" page=1 query='') class='btn btn-default'}}Close{{/link-to}}
+                                  </div>
+                                  <div class="col-xs-3 text-right">Status:</div>
+                                  <div class="col-xs-8 text-right">
+                                      <div class="btn-group">
+                                          <button {{action "getNext" model 'Left Message'}} class="btn btn-success">Left Message</button>
+                                          <button {{action "getNext" model 'Do Not Call'}} class="btn btn-danger">Do Not Call</button>
+                                          <button {{action "getNext" model 'Call Back'}} class="btn btn-info">Call Back</button>
+                                          <button {{action "getNext" model 'Wrong Number'}} class="btn btn-warning">Wrong Number</button>
+                                          <button {{action "getNext" model 'Success'}} class="btn btn-success">Success</button>
 
-        <div class="col-xs-12 text-right">
-          {{#if isNexting}}
-              <div class="row">
-                  <div class="col-xs-1">
-                    {{#link-to 'contacts' (query-params status="" page=1 query='') class='btn btn-default'}}Back{{/link-to}}
-                  </div>
-                  <div class="col-xs-3 text-right">Status:</div>
-                  <div class="col-xs-8 text-right">
-                      <div class="btn-group">
-                          <button {{action "getNext" model 'Left Message'}} class="btn btn-success">Left Message</button>
-                          <button {{action "getNext" model 'Do Not Call'}} class="btn btn-danger">Do Not Call</button>
-                          <button {{action "getNext" model 'Call Back'}} class="btn btn-info">Call Back</button>
-                          <button {{action "getNext" model 'Wrong Number'}} class="btn btn-warning">Wrong Number</button>
-                          <button {{action "getNext" model 'Success'}} class="btn btn-success">Success</button>
-
-                      </div>
-                  </div>
-              </div>
-
-
-          {{else}}
-              <button {{action "nextClick"}} class="btn btn-success">Next</button>
-          {{/if}}
-
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-8">
-            <h3>{{name}}</h3>
-            <ul class="lead">
-              {{#each property in properties}}
-                  <li>{{property.key}}: {{property.value}}</li>
-              {{/each}}
-            </ul>
-            <div class="row">
-                <div class="col-lg-12">
-                    <a class="btn btn-lg btn-success" target="_blank" href="http://repairshopr.mytalkdesk.com/#call/{{unbound phone}}" role="button">Call: {{number-to-phone phone}}</a>
-
-                </div>
-            </div>
-
-            <div class="row mtm" style="margin-top: 10px;">
-                <div class="col-lg-12">
-                    Status: {{inline-dropdown value=status model=model options=controller.statusOptions attribute="status"}}
-
-                </div>
-            </div>
-
-        </div>
-        <div class="col-xs-4 panel" style='margin-top: 100px;'>
-            <p>Existing Contacts:</p>
-            <ul>
-              {{#each externalContact in externalContacts}}
-                  <li>{{externalContact.name}} {{external-more contact=externalContact}}</li>
-              {{/each}}
-            </ul>
-        </div>
-    </div>
-
-    <div style="height: 20px;"></div>
+                                      </div>
+                                  </div>
+                              </div>
 
 
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="panel panel-default">
+                          {{else}}
+                              <button {{action "nextClick"}} class="btn btn-success">Next</button>
+                          {{/if}}
 
-                <div class="panel-heading">Admin Notes</div>
-                <div class="panel-body">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <h3>{{name}}</h3>
+                            <ul class="lead">
+                              {{#each property in properties}}
+                                  <li>{{property.key}}: {{property.value}}</li>
+                              {{/each}}
+                            </ul>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <a class="btn btn-lg btn-success" target="_blank" href="http://repairshopr.mytalkdesk.com/#call/{{unbound phone}}" role="button">Call: {{number-to-phone phone}}</a>
 
-                    <ul class="list-unstyled">
-                      {{#each sortedActivities}}
-                          <li><strong>{{userName}}</strong> {{createdAt}} {{notes}}</li>
-                      {{/each}}
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">New Note</div>
-                <div class="panel-body">
-                    <form {{action "newAdminNote" on="submit"}}>
-                        <div class="form-group row">
-                            <div class="col-sm-9">
-                              {{textarea value=newNoteBody id='body' class="form-control" placeholder="New Note" rows=4}}
+                                </div>
                             </div>
-                            <div class="col-sm-3">
-                                <button class="btn btn-primary btn-block" type="submit">Add Note</button>
+
+                            <div class="row mtm" style="margin-top: 10px;">
+                                <div class="col-lg-12">
+                                    Status: {{inline-dropdown value=status model=model options=controller.statusOptions attribute="status"}}
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-4 panel" style='margin-top: 100px;'>
+                            <p>Existing Contacts:</p>
+                            <ul>
+                              {{#each externalContact in externalContacts}}
+                                  <li>{{externalContact.name}} {{external-more contact=externalContact}}</li>
+                              {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="height: 20px;"></div>
+
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="panel panel-default">
+
+                                <div class="panel-heading">Admin Notes</div>
+                                <div class="panel-body">
+
+                                    <ul class="list-unstyled">
+                                      {{#each sortedActivities}}
+                                          <li><strong>{{userName}}</strong> {{createdAt}} {{notes}}</li>
+                                      {{/each}}
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </form>
+                        <div class="col-lg-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">New Note</div>
+                                <div class="panel-body">
+                                    <form {{action "newAdminNote" on="submit"}}>
+                                        <div class="form-group row">
+                                            <div class="col-sm-9">
+                                              {{textarea value=newNoteBody id='body' class="form-control" placeholder="New Note" rows=4}}
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <button class="btn btn-primary btn-block" type="submit">Add Note</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+                <!--end the modal body-->
             </div>
         </div>
     </div>
-
 </div>
-
-

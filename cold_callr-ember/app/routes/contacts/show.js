@@ -6,6 +6,7 @@ export default Ember.Route.extend({
     return this.store.find('contact', params.contact_id);
   },
 
+
   actions: {
     getNext: function(contact,status){
       alert("getting next");

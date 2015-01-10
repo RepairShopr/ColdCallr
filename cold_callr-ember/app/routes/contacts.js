@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { PaginationRouteMixin } from '../../mixins/pagination-base';
+import { PaginationRouteMixin } from '../mixins/pagination-base';
 
 export default Ember.Route.extend(PaginationRouteMixin,{
   queryParams: {
