@@ -23,6 +23,7 @@ class Contact < ActiveRecord::Base
   scope :is_open, -> { where("status = ? OR status = ?","New","Call Back").where(do_not_call: false) }
   scope :any_status, -> { where(do_not_call: false) }
   scope :is_new, -> { where("status != ? AND status != ?","New","Call Back").where(do_not_call: false)  }
+  scope :is_callback, -> { where("status = ?","Call Back").where(do_not_call: false)  }
 
   POSSIBLE_STATUSES = [ 'New', 'Wrong Number', 'Do Not Call', 'Call Back', 'Left Message', 'Closed']
   before_validation :set_defaults

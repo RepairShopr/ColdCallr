@@ -5,14 +5,18 @@ class Api::ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    if params[:query].present?
-      if params[:query] == 'open'
+    if params[:status].present?
+      if params[:status] == 'open'
         scoped = Contact.is_open
-      elsif params[:query] == "all"
+      elsif params[:status] == "all"
         scoped = Contact.any_status
+      elsif params[:status] == 'new'
+        scoped = Contact.is_new
+      elsif params[:status] == 'call_back'
+        scoped = Contact.is_callback
       end
     end
-    scoped ||= Contact.is_new
+    scoped ||= Contact.is_open
     
     scoped =  scoped.order(:id).includes(:activities => :user)
     if params[:current_contact]

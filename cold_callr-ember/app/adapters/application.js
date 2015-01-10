@@ -4,6 +4,10 @@ import config from '../config/environment';
 
 export default DS.ActiveModelAdapter.extend({
   host: config.host,
-  namespace: 'api'
+  namespace: 'api',
+  coalesceFindRequests: true
 });
 
+DS.ActiveModelAdapter.reopen({
+  coalesceFindRequests: true
+});

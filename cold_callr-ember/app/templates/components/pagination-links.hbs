@@ -1,0 +1,28 @@
+<div class="pagination-centered">
+    <ul class="pagination">
+      {{#if canStepBackward}}
+          <li><a {{action 'stepBackward'}}>previous</a></li>
+      {{else}}
+          <li class="disabled"><a href="" >previous</a></li>
+      {{/if}}
+
+      {{#each item in pageItems}}
+        {{#if item.ellipses}}
+            <li class="disabled"><a href="">...</a></li>
+        {{else}}
+          {{#if item.current}}
+              <li class="active"><a href="" >{{item.page}}</a></li>
+          {{else}}
+              <li><a {{action "pageClicked" item.page}}>{{item.page}}</a></li>
+          {{/if}}
+        {{/if}}
+      {{/each}}
+
+      {{#if canStepForward}}
+          <li><a {{action 'stepForward'}}>next</a></li>
+      {{else}}
+          <li class="disabled"><a href="" >next</a></li>
+      {{/if}}
+    </ul>
+
+</div>

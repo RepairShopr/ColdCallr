@@ -5,7 +5,10 @@
         <div class="col-xs-12 text-right">
           {{#if isNexting}}
               <div class="row">
-                  <div class="col-xs-4 text-right">Status:</div>
+                  <div class="col-xs-1">
+                    {{#link-to 'contacts' (query-params status="" page=1 query='') class='btn btn-default'}}Back{{/link-to}}
+                  </div>
+                  <div class="col-xs-3 text-right">Status:</div>
                   <div class="col-xs-8 text-right">
                       <div class="btn-group">
                           <button {{action "getNext" model 'Left Message'}} class="btn btn-success">Left Message</button>
