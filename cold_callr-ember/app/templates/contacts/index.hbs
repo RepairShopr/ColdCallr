@@ -1,2 +1,30 @@
-array {{model.length}}
+<div class="row">
+    <div class="col-xs-12">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Contact</th>
+                <th>Notes</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each contact in model}}
+                <tr>
+                    <td>{{contact.id}}</td>
+                    <td>
+                      {{link-to contact.name 'contacts.show' contact}}
+                    </td>
+                    <td></td>
+                    <td>{{contact.status}}</td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
 

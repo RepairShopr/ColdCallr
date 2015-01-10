@@ -1,18 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model: function() {
-    return this.store.find('contact');
-  },
 
-  afterModel: function(contacts, transition) {
-    if (contacts.get('length') > 0) {
-      this.transitionTo('contacts.show', contacts.get('firstObject'));
-    }
+  model: function(params) {
+    return this.store.find('contact', params.contact_id);
   },
 
   actions: {
     getNext: function(contact,status){
+      alert("getting next");
       var that = this;
       contact.set("status",status);
       contact.save();

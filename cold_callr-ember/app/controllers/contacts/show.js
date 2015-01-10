@@ -21,7 +21,6 @@ export default Ember.ObjectController.extend({
     },
 
     getNext: function(contact,status){
-      //this.set("isNexting",false);
       return true;
     }
   }
