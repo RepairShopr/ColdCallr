@@ -9,7 +9,6 @@ export default Ember.Route.extend({
 
   actions: {
     getNext: function(contact,status){
-      alert("getting next");
       var that = this;
       contact.set("status",status);
       contact.save();
