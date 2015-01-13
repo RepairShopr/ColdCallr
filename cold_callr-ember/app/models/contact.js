@@ -8,6 +8,11 @@ export default DS.Model.extend({
   properties: DS.attr(),
   activities: DS.hasMany('activity', {embedded: true}),
 
-  externalContacts: DS.hasMany('external-contact', {async: true})
+  externalContacts: DS.hasMany('external-contact', {async: true}),
+
+  phoneLink: function() {
+    return 'http://repairshopr.mytalkdesk.com/#call/' + this.get('phone');
+  }.property('phone')
+
 
 });
