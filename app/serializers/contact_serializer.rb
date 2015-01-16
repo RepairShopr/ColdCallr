@@ -1,11 +1,10 @@
 class ContactSerializer < ApplicationSerializer
 
-
-  embed :ids, include: true
   has_many :activities
-  attributes :id, :name, :phone, :status, :user_id, :properties, :links
+  attributes :id, :name, :phone, :status, :user_id, :formatted_properties, :links,
+             :city, :state
 
-  def properties
+  def formatted_properties
     object.properties.keys.map {|k| {key: k, value: object.properties[k]}}
   end
 
@@ -13,6 +12,14 @@ class ContactSerializer < ApplicationSerializer
     {
       external_contacts: "/api/contacts/#{object.id}/external_contacts"
     }
+  end
+
+  def city
+    object.properties['city'] || object.properties[:city]
+  end
+
+  def state
+    object.properties['state'] || object.properties[:state]
   end
 
 end

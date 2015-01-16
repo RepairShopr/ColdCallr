@@ -22,6 +22,7 @@
             <tr>
                 <th>ID</th>
                 <th>Contact</th>
+                <th>City/State</th>
                 <th>Notes</th>
                 <th>Status</th>
             </tr>
@@ -33,7 +34,10 @@
                     <td>
                       {{link-to contact.name 'contacts.show' contact}}
                     </td>
-                    <td></td>
+                    <td>
+                      {{contact.formattedCityState}}
+                    </td>
+                    <td>{{contact.lastAddedNote}}</td>
                     <td>{{contact.status}}</td>
                 </tr>
             {{/each}}
