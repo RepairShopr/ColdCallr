@@ -7,44 +7,32 @@
                     <div class="col-xs-12">
                         {{#if isNexting}}
                             <div class="row">
-                                <div class="col-xs-12 col-sm-4 col-md-6">
+                                <div class="col-xs-12 col-sm-4">
                                     {{#link-to 'contacts' (query-params status="" page=1 query='') class='btn btn-default'}}
                                         Close
                                     {{/link-to}}
                                 </div>
-                                <div class="col-xs-12 col-sm-8 col-md-6">
-                                    <div class="btn-group btn-group-justified" role="group">
-                                        <div class="btn-group">
-                                            <button type="button"  {{action "getNext" model 'Left Message'}}
-                                                    class="btn btn-success">
-                                                Left Message
-                                            </button>
-                                        </div>
-                                        <div class="btn-group">
-                                            <button type="button"  {{action "getNext" model 'Do Not Call'}}
-                                                    class="btn btn-danger">
-                                                Do Not Call
-                                            </button>
-                                        </div>
-                                        <div class="btn-group">
-                                            <button type="button"  {{action "getNext" model 'Call Back'}}
-                                                    class="btn btn-info">
-                                                Call Back
-                                            </button>
-                                        </div>
-                                        <div class="btn-group">
-                                            <button type="button"  {{action "getNext" model 'Wrong Number'}}
-                                                    class="btn btn-warning">
-                                                Wrong Number
-                                            </button>
-                                        </div>
-                                        <div class="btn-group">
-                                            <button type="button"  {{action "getNext" model 'Success'}}
-                                                    class="btn btn-success">
-                                                Success
-                                            </button>
-                                        </div>
-                                    </div>
+                                <div class="col-xs-12 col-sm-8 text-right">
+                                    <button type="button"  {{action "getNext" model 'Left Message'}}
+                                            class="btn btn-success">
+                                        Left Message
+                                    </button>
+                                    <button type="button"  {{action "getNext" model 'Do Not Call'}}
+                                            class="btn btn-danger">
+                                        Do Not Call
+                                    </button>
+                                    <button type="button"  {{action "getNext" model 'Call Back'}}
+                                            class="btn btn-info">
+                                        Call Back
+                                    </button>
+                                    <button type="button"  {{action "getNext" model 'Wrong Number'}}
+                                            class="btn btn-warning">
+                                        Wrong Number
+                                    </button>
+                                    <button type="button"  {{action "getNext" model 'Success'}}
+                                            class="btn btn-success">
+                                        Success
+                                    </button>
                                 </div>
                             </div>
                         {{else}}
@@ -62,7 +50,7 @@
                                             <div class="col-xs-5"><span class="lead">{{name}}</span></div>
                                             <div class="col-xs-7">
                                                 <a class="btn btn-success"
-                                                                     target="_blank" {{bind-attr href="phoneLink"}}">
+                                                   target="_blank" {{bind-attr href="phoneLink"}}">
                                                 Call: {{number-to-phone phone}}
                                                 </a>
                                             </div>
@@ -103,7 +91,8 @@
                                                         {{textarea value=newNoteBody id='body' class="form-control" placeholder="New Note" rows=4}}
                                                     </div>
                                                     <div class="form-group">
-                                                        <button class="btn btn-primary btn-block col-xs-6" type="submit">Add Note
+                                                        <button class="btn btn-primary btn-block col-xs-6"
+                                                                type="submit">Add Note
                                                         </button>
                                                     </div>
                                                 </form>
@@ -114,12 +103,12 @@
                                         <ul class="list-group">
                                             <li class="list-group-item disabled">Admin Notes</li>
                                             {{#each sortedActivities}}
-                                                <li class="list-group-item"><strong>{{userName}}</strong> {{createdAt}} {{notes}}</li>
+                                                <li class="list-group-item">
+                                                    <strong>{{userName}}</strong> {{createdAt}} {{notes}}</li>
                                             {{/each}}
                                         </ul>
                                     {{/if}}
                                 </div>
-
 
 
                             </div>
