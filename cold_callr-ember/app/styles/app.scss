@@ -1,11 +1,12 @@
-@import 'spaces';
+@import 'modules';
+@import 'components';
 
 
 .dottr {
     border-bottom: 1px dotted #428bca;
 }
 
-modal {
+.modal {
   height: 100%;
 }
 
