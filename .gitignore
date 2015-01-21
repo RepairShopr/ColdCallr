@@ -20,3 +20,4 @@ cold_callr-ember/dist
 cold_callr-ember/node_modules
 cold_callr-ember/tmp
 cold_callr-ember/bower_components
+.env
