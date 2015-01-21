@@ -7,7 +7,7 @@
   {{#link-to 'contacts' (query-params status="call_back" page=1) class='btn btn-default'}}Call Back{{/link-to}}
 </div>
 
-<div class="row mtm" style="margin-top: 10px;">
+<div class="row mtm">
     <div class="col-xs-12">
         (Page {{page}} of {{total_pages}} pages, viewing {{model.length}})<br>
       {{pagination-links currentPage=page totalPages=total_pages}}

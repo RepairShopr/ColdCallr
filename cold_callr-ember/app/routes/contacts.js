@@ -18,7 +18,7 @@ export default Ember.Route.extend(PaginationRouteMixin,{
     return this.store.find('contact', {page: params.page, sort_by: params.sortBy, status: params.status, query: params.query});
   },
 
-  //TODO: refactor to use https://github.com/simplabs/ember-simple-auth#readme
+    //TODO: refactor to use https://github.com/simplabs/ember-simple-auth#readme
     actions: {
         error: function (error, transition) {
             if (error && error.status === 401 && error.statusText === "Unauthorized") {
