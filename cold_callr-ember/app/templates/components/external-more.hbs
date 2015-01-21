@@ -1,28 +1,30 @@
-<a {{action "toggleMore"}}>
-    <i class="fa fa-plus">+</i>
-    {{contact.name}}
-</a>
+<div class="row">
+    <div class="col-xs-12">
+        <i class="fa fa-plus">+</i>
+        {{contact.name}}
+    </div>
+</div>
 {{#if isShowingMore}}
-    <div class="row">
-        <div class="col-xs-12">
-            <p class="lead">Phone: {{contact.phone}}</p>
-        </div>
-        {{#if contact.properties}}
-            <div class="col-xs-12">
-                <p class="lead">each property</p>
-                <ul class="list-group">
-                    {{#each property in contact.properties}}
-                        <li class="list-group-item">
-                            <strong>{{property.[0]}}:</strong>
-                            {{property.[1]}}
-                        </li>
-                    {{/each}}
-                </ul>
+    <div class="panel panel-default mtl">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <p class="lead">Phone: {{contact.phone}}</p>
+                </div>
+                {{#if contact.properties}}
+                    <div class="col-xs-12">
+                        <ul class="list-group">
+                            {{#each property in contact.properties}}
+                                <li class="list-group-item">
+                                    <strong>{{property.[0]}}:</strong>
+                                    {{property.[1]}}
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                {{/if}}
+
             </div>
-        {{/if}}
-        <div class="col-xs-12">
-            <p class="lead">properties</p>
-            {{contact.properties}}
         </div>
     </div>
 {{/if}}

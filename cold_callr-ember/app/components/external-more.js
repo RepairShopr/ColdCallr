@@ -1,11 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  actions: {
-    toggleMore: function () {
-      this.toggleProperty('isShowingMore');
-    }
+  click: function () {
+    this.toggleProperty('isShowingMore');
   },
-  tagName: "li",
-  classNames: ["list-group-item"]
+  tagName: "a",
+  classNames: ["list-group-item"],
+  classNameBindings: ["isShowingMore:open"]
 });
