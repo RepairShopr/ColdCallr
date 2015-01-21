@@ -1,7 +1,28 @@
-<a {{action "toggleMore"}} class="pull-right" style="padding-left: 5px;"><i class="fa fa-plus">+</i></a>
+<a {{action "toggleMore"}}>
+    <i class="fa fa-plus">+</i>
+    {{contact.name}}
+</a>
 {{#if isShowingMore}}
-    <br>
-    Phone: {{contact.phone}} <br>
-    {{contact.properties}}
-
+    <div class="row">
+        <div class="col-xs-12">
+            <p class="lead">Phone: {{contact.phone}}</p>
+        </div>
+        {{#if contact.properties}}
+            <div class="col-xs-12">
+                <p class="lead">each property</p>
+                <ul class="list-group">
+                    {{#each property in contact.properties}}
+                        <li class="list-group-item">
+                            <strong>{{property.[0]}}:</strong>
+                            {{property.[1]}}
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/if}}
+        <div class="col-xs-12">
+            <p class="lead">properties</p>
+            {{contact.properties}}
+        </div>
+    </div>
 {{/if}}
