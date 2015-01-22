@@ -26,11 +26,8 @@ export default DS.Model.extend({
     }
   }.property('city', 'state'),
 
-  lastAddedNote: function() {
-    var noteBody = "";
-    this.get('activities').forEach(function(activity) {
-      noteBody += activity.get('notes');
-    });
-    return noteBody;
+
+  lastAddedNote: function () {
+    return this.get('activities').popObject() || {notes: "[no notes]"};
   }.property('activities.@each')
 });

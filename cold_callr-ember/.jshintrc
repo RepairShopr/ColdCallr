@@ -3,7 +3,9 @@
     "document",
     "window",
     "-Promise",
-    "formatInternational"
+    "formatInternational",
+    "moment",
+    "Intl"
   ],
   "browser" : true,
   "boss" : true,
