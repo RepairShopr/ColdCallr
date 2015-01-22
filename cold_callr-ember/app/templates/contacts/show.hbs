@@ -71,12 +71,10 @@
                             <div class="col-xs-12 col-sm-4">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">Existing Contacts:</div>
-                                    <div class="panel-body">
-                                        <ul class="list-group">
-                                            {{#each externalContact in externalContacts}}
-                                                <li class="list-group-item">{{externalContact.name}} {{external-more contact=externalContact}}</li>
-                                            {{/each}}
-                                        </ul>
+                                    <div class="list-group">
+                                        {{#each externalContact in externalContacts}}
+                                            {{external-more contact=externalContact}}
+                                        {{/each}}
                                     </div>
                                 </div>
                             </div>

@@ -19,7 +19,7 @@ export default Ember.Route.extend({
         console.log("length is" + contactPromise.get('length'));
         that.controller.set('previousId',contact.id);
         that.transitionTo("contacts.show", contactPromise.content.content[0].id);
-      })
+      });
 
     }
   }
