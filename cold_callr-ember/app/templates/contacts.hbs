@@ -17,7 +17,7 @@
 
 <div class="row">
     <div class="col-xs-12">
-        <table class="table table-condensed">
+        <table class="table table-condensed table-hover">
             <colgroup>
                 <col span="1" style="width: 50px;">
                 <col span="1" style="width: 150px;">
@@ -39,29 +39,14 @@
                 <tr>
                     <td>{{contact.id}}</td>
                     <td>
-                      {{link-to contact.name 'contacts.show' contact}}
+                        {{link-to contact.name 'contacts.show' contact}}
                     </td>
                     <td>{{contact.formattedCityState}}</td>
                     <td>
-                        {{#if contact.activities}}
-                            <table class="table table-condensed no-border">
-                                <colgroup>
-                                    <col span="1" style="width: 125px;">
-                                    <col span="1" style="auto;">
-                                </colgroup>
-                                <tbody>
-                                {{#each activity in contact.activities}}
-
-                                    <tr>
-                                        <td>{{activity.createdAt}}</td>
-                                        <td>{{activity.notes}}</td>
-                                    </tr>
-                                {{/each}}
-                                </tbody>
-                            </table>
-                        {{else}}
-                            <p>[No Notes]</p>
-                        {{/if}}
+                        <div class="row">
+                            <div class="col-lg-3">{{contact.lastAddedNote.createdAt}}</div>
+                            <div class="col-lg-9">{{contact.lastAddedNote.notes}}</div>
+                        </div>
                     </td>
                     <td>{{contact.status}}</td>
                 </tr>

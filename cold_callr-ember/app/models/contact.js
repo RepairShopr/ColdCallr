@@ -12,28 +12,22 @@ export default DS.Model.extend({
 
   externalContacts: DS.hasMany('external-contact', {async: true}),
 
-  phoneLink: function() {
+  phoneLink: function () {
     return 'http://repairshopr.mytalkdesk.com/#call/' + this.get('phone');
   }.property('phone'),
 
-  formattedCityState: function() {
+  formattedCityState: function () {
     var city = this.get("city");
     var state = this.get("state");
-    if(city.length > 0){
+    if (city.length > 0) {
       return city + ", " + state;
-    }
-    else{
+    } else {
       return state;
     }
-  }.property('city'),
+  }.property('city', 'state'),
 
-  lastAddedNote: function() {
-    var noteBody = "";
-    this.get('activities').forEach(function(activity) {
-      noteBody += activity.get('notes');
-    });
-    return noteBody;
+
+  lastAddedNote: function () {
+    return this.get('activities').popObject() || {notes: "[no notes]"};
   }.property('activities.@each')
-
-
 });
