@@ -16,6 +16,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+.DS_Store
 cold_callr-ember/dist
 cold_callr-ember/node_modules
 cold_callr-ember/tmp
