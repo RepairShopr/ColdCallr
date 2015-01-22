@@ -1,4 +1,5 @@
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+[![Build Status](https://snap-ci.com/RepairShopr/ColdCallr/branch/master/build_image)](https://snap-ci.com/RepairShopr/ColdCallr/branch/master)
 
 ## What is it?
 
