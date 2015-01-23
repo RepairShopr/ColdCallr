@@ -14,5 +14,8 @@
     "ember-qunit-notifications": "0.0.5",
     "qunit": "~1.17.1",
     "phone-format-bower": "git@github.com:blairanderson/phoneformat.js.git#~1.0.1"
+  },
+  "devDependencies": {
+    "bootstrap-sass": "~3.3.3"
   }
 }
