@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :users
   namespace :api do
     resources :contacts do
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
       end
     end
     resources :activities
+    resources :lists
   end
 
 

@@ -2,7 +2,7 @@ class ContactSerializer < ApplicationSerializer
 
   has_many :activities
   attributes :id, :name, :phone, :status, :user_id, :formatted_properties, :links,
-             :city, :state
+             :city, :state, :list_id
 
   def formatted_properties
     object.properties.keys.map {|k| {key: k, value: object.properties[k]}}
@@ -15,7 +15,7 @@ class ContactSerializer < ApplicationSerializer
   end
 
   def city
-    object.properties['city'] || object.properties[:city]
+    object.properties.with_indifferent_access[:city]
   end
 
   def state

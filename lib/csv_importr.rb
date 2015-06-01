@@ -6,6 +6,8 @@ class CSVImportr
   def initialize
 
     @file_path = "https://dl.dropboxusercontent.com/u/15079951/cold-callr-sample-csv.csv"
+    @list = List.order(:id).last
+
     puts "You are smart!"
   end
 
@@ -55,6 +57,7 @@ class CSVImportr
     @errors = []
     @file_rows.each do |row|
       contact = Contact.new(row)
+      contact.list = @list
       if contact.save
         @result << contact
       else

@@ -17,8 +17,9 @@ class Api::ContactsController < ApplicationController
       end
     end
     scoped ||= Contact.is_open
-    
-    scoped =  scoped.order(:id).includes(:activities => :user)
+    active_lists = List.where(enabled: true).pluck(:id)
+
+    scoped =  scoped.where(list_id: active_lists).order(:id).includes(:activities => :user)
     if params[:current_contact]
       scoped = scoped.where("id > ?",params[:current_contact].to_i).order(:id).includes(:activities => :user)
     end

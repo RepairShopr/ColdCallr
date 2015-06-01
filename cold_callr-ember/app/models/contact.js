@@ -19,7 +19,7 @@ export default DS.Model.extend({
   formattedCityState: function () {
     var city = this.get("city");
     var state = this.get("state");
-    if (city.length > 0) {
+    if (city != null && city.length > 0) {
       return city + ", " + state;
     } else {
       return state;

@@ -11,6 +11,7 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  do_not_call :boolean          default(FALSE)
+#  list_id     :integer
 #
 
 require 'test_helper'
