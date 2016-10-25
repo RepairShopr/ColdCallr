@@ -24,6 +24,7 @@ puts "seed user created: #{email}:#{password}"
 100.times do |i|
   Contact.create name: Faker::Name.name,
                  phone: Faker::PhoneNumber.phone_number,
+                 state: Faker::Address.state,
                  properties: {business_name: Faker::Company.name,
                               address: Faker::Address.street_name,
                               city: Faker::Address.city,
@@ -32,4 +33,10 @@ puts "seed user created: #{email}:#{password}"
                               tagline: Faker::Company.catch_phrase,
                               logo: Faker::Company.logo,
                               website: Faker::Internet.url}
+end
+
+if ENV['migrate']
+  Contact.all.each do |c|
+    c.update_attribute :state, c.properties['state']
+  end
 end

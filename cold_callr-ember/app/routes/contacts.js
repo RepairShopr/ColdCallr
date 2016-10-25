@@ -11,11 +11,14 @@ export default Ember.Route.extend(PaginationRouteMixin,{
     },
     query: {
       refreshModel: true
+    },
+    timezone: {
+      refreshModel: true
     }
   },
 
   model: function(params) {
-    return this.store.find('contact', {page: params.page, sort_by: params.sortBy, status: params.status, query: params.query});
+    return this.store.find('contact', {page: params.page, sort_by: params.sortBy, status: params.status, query: params.query, timezone: params.timezone});
   },
 
   actions: {

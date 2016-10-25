@@ -47,7 +47,7 @@ class CSVImportr
         hash[f] = row[f]
       end
 
-      @file_rows << {name: row['name'], phone: row['phone'], properties: hash}
+      @file_rows << {name: row['name'], phone: row['phone'], state: hash['state'], properties: hash}
     end
     puts "Alright alright alright - you have #{file_rows.size} rows in this bad boy"
   end

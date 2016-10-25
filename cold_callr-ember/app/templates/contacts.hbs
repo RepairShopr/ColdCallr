@@ -5,6 +5,11 @@
   {{#link-to 'contacts' (query-params status="all" page=1 query='') class='btn btn-default'}}All{{/link-to}}
   {{#link-to 'contacts' (query-params status="" page=1) class='btn btn-default'}}Open{{/link-to}}
   {{#link-to 'contacts' (query-params status="call_back" page=1) class='btn btn-default'}}Call Back{{/link-to}}
+  {{#link-to 'contacts' (query-params timezone="PST" page=1) class='btn btn-default'}}Pacific Time{{/link-to}}
+  {{#link-to 'contacts' (query-params timezone="MST" page=1) class='btn btn-default'}}Mountain Time{{/link-to}}
+  {{#link-to 'contacts' (query-params timezone="CST" page=1) class='btn btn-default'}}Central Time{{/link-to}}
+  {{#link-to 'contacts' (query-params timezone="EST" page=1) class='btn btn-default'}}Eastern Time{{/link-to}}
+  {{#link-to 'contacts' (query-params timezone="" page=1) class='btn btn-default'}}Any TZ{{/link-to}}
 </div>
 
 <div class="row mtm">

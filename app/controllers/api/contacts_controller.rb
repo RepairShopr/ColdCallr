@@ -16,6 +16,7 @@ class Api::ContactsController < ApplicationController
         scoped = Contact.is_callback
       end
     end
+
     scoped ||= Contact.is_open
     active_lists = List.where(enabled: true).pluck(:id)
 
@@ -24,9 +25,15 @@ class Api::ContactsController < ApplicationController
       scoped = scoped.where("id > ?",params[:current_contact].to_i).order(:id).includes(:activities => :user)
     end
 
+    if params[:timezone].present?
+      scoped = scoped.where(state: Contact.state_mapping[params[:timezone]])
+      puts "COUNT: #{scoped.count}"
+    end
+
     @contacts = scoped.paginate(per_page: (params[:per_page] || 50), page: params[:page])
     render json: @contacts, :meta => {:total_pages => @contacts.total_pages, :page => (params[:page] || 1).to_i}
   end
+
 
   # GET /contacts/1
   # GET /contacts/1.json

@@ -2,9 +2,10 @@ import Ember from 'ember';
 import { PaginationControllerMixin } from '../mixins/pagination-base';
 
 export default Ember.ArrayController.extend(PaginationControllerMixin,{
-  queryParams: ['sortBy', 'page', 'status', 'query'],
+  queryParams: ['sortBy', 'page', 'status', 'query', 'timezone'],
   sortBy: 'createdAt',
   query: '',
+  timezone: '',
   sortAscending: false,
   status: '',
   page: 1,

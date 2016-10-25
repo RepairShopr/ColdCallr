@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150601125734) do
+ActiveRecord::Schema.define(version: 20161024235722) do
 
   create_table "activities", force: true do |t|
     t.integer  "contact_id"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20150601125734) do
     t.datetime "updated_at"
     t.boolean  "do_not_call", default: false
     t.integer  "list_id"
+    t.string   "state"
   end
 
   create_table "lists", force: true do |t|

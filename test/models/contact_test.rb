@@ -12,6 +12,7 @@
 #  updated_at  :datetime
 #  do_not_call :boolean          default(FALSE)
 #  list_id     :integer
+#  state       :string(255)
 #
 
 require 'test_helper'
