@@ -54,6 +54,12 @@ class TroysAPIClient
     JSON.parse response.body
   end
 
+  def update_customer id,params
+    setup_connection
+    response = @conn.put "#{api_version}/customers/#{id}?api_key=#{@api_key}", params
+    JSON.parse response.body
+  end
+
   def create_vendor params
     setup_connection
     response = @conn.post "#{api_version}/vendors.json?api_key=#{@api_key}", params
